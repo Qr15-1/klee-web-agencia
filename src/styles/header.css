@@ -1,0 +1,16 @@
+/* src/styles/header.css */
+
+.boton-amarillo {
+    /* Usamos @apply para seguir aprovechando las utilidades de Tailwind */
+    @apply bg-transparent border-2 font-bold py-3 px-8 rounded-full text-sm tracking-wider transition-colors duration-300;
+
+    /* Le ponemos los colores directamente para que sea infalible */
+    border-color: #FBC943;
+    color: #FBC943;
+    text-decoration: none; /* Quitamos el subrayado del enlace */
+}
+
+.boton-amarillo:hover {
+    background-color: #FBC943;
+    color: black;
+}

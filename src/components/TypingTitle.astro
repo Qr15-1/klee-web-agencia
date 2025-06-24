@@ -1,0 +1,30 @@
+---
+// src/components/TypingTitle.astro
+---
+<!--
+    CAMBIOS CLAVE:
+    1. font-display: Para usar la tipografía "Bebas Neue" que configuramos.
+    2. text-7xl: Un tamaño un poco más pequeño y más parecido al diseño.
+    3. leading-tight: Reduce el espacio entre las líneas del título para que esté más compacto.
+-->
+<h1 id="typewriter" class="font-display text-6xl md:text-7xl tracking-wider text-white leading-tight">
+      
+</h1>
+
+<script>
+    import Typewriter from 'typewriter-effect/dist/core';
+
+    const typewriterElement = document.getElementById('typewriter');
+
+    const typewriter = new Typewriter(typewriterElement, {
+        loop: false,
+        delay: 70,
+    });
+
+    typewriter
+        .pauseFor(300)
+        .typeString('DA EL PRIMER PASO HACIA')
+        .typeString('<br>')
+        .typeString('EL ÉXITO <span class="text-klee-yellow">HOY MISMO</span>')
+        .start();
+</script>

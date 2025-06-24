@@ -1,0 +1,39 @@
+---
+// src/components/Hero.astro
+import TypingTitle from './TypingTitle.astro';
+---
+
+<section class="container mx-auto px-4 mt-3">
+    <!--
+        ¡AQUÍ ESTÁ EL CAMBIO!
+        Hemos reemplazado el color de fondo sólido por clases de degradado de Tailwind.
+        
+        - bg-gradient-to-br: Define la dirección del degradado (bottom-right).
+        - from-red-500/20: Empieza con un rojo semitransparente.
+        - via-blue-900/60: Pasa por un azul oscuro más opaco en el centro.
+        - to-blue-500/20: Termina en un azul más claro y semitransparente.
+        
+        También he quitado la línea 'style' que apuntaba a una imagen de fondo,
+        ya que la reemplazamos con este degradado CSS.
+    -->
+    <div 
+        class="
+            relative 
+            bg-gradient-to-br from-red-500/20 via-blue-900/60 to-blue-500/20
+            rounded-3xl min-h-[500px] flex flex-col justify-center items-center 
+            text-center p-8 overflow-hidden
+        "
+    >
+        <!-- Este overlay ya no es tan necesario, pero lo dejamos por si quieres
+             añadir una imagen de fondo después. Le bajamos la opacidad. -->
+        <div class="absolute inset-0 bg-black/10"></div>
+
+        <div class="relative z-10 flex flex-col items-center">
+            <TypingTitle client:load />
+
+            <p class="mt-4 text-xl text-gray-200 font-sans">
+                we will make you unique
+            </p>
+        </div>
+    </div>
+</section>

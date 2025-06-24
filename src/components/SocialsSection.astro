@@ -1,0 +1,62 @@
+---
+// src/components/SocialsSection.astro
+import { Icon } from 'astro-icon/components';
+import ImageCarousel from './ImageCarousel.astro'; // 1. Importamos el nuevo componente
+---
+<div class="container mx-auto px-6 mt-16">
+    <section class="rounded-3xl bg-gradient-to-br from-red-500/20 via-blue-900/60 to-blue-500/20 px-6 py-16 md:py-24 relative overflow-hidden">
+        
+        <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('/hero-background.jpg');"></div>
+
+        <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+            
+            <!-- COLUMNA IZQUIERDA: TEXTO -->
+            <div class="text-white">
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-full p-2 flex items-center mb-10">
+                    <input type="text" readonly value="¿Por qué las Redes Sociales?" class="bg-transparent text-white placeholder-gray-300 w-full ml-4 focus:outline-none font-sans text-sm">
+                    <button class="bg-white/5 rounded-full p-2.5 hover:bg-white/20 transition-colors">
+                        <Icon name="mdi:magnify" class="w-6 h-6 text-gray-300" />
+                    </button>
+                </div>
+                <h2 class="font-display text-4xl md:text-6xl tracking-wide leading-tight mb-8">
+                    Las redes sociales se han transformado en una <br>
+                    <span class="text-klee-yellow">herramienta esencial</span>
+                </h2>
+                <div class="font-sans text-gray-300 space-y-4 leading-relaxed">
+                    <p>
+                        Para el crecimiento, la reputación y la credibilidad de las empresas.
+                        Hoy en día, la inactividad en las redes sociales y la falta de contenido valioso pueden suscitar desconfianza entre los usuarios. Mantener una presencia activa y relevante en las plataformas digitales se ha vuelto imperativo para establecer la confianza del cliente.
+                    </p>
+                    <p>
+                        Las redes sociales ofrecen a tu empresa la oportunidad de conectarse más profundamente con los usuarios existentes y expandir su alcance hacia nuevas audiencias, creando así una relación más cercana y significativa con su público objetivo.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 
+                =======================================================
+                 COLUMNA DERECHA: REEMPLAZADA CON LA LÓGICA DEL CARRUSEL
+                =======================================================
+            -->
+            <div>
+                <!-- El carrusel SOLO se muestra en móviles (se oculta en md y superior) -->
+                <div class="md:hidden">
+                    <ImageCarousel client:load />
+                </div>
+                
+                <!-- El diseño de superposición SOLO se muestra en escritorio (oculto por defecto, visible en md y superior) -->
+                <div class="hidden md:block relative min-h-[450px]">
+                    <div class="p-1.5 bg-white rounded-2xl shadow-lg w-6/12 absolute top-1/2 -translate-y-1/2 left-0 z-10 -rotate-3">
+                        <img src="/imagenes/nr3.jpg" alt="Plato del día" class="rounded-xl w-full h-auto object-cover">
+                    </div>
+                    <div class="p-1.5 bg-white rounded-2xl shadow-lg w-6/12 absolute top-0 left-1/4 z-20 rotate-2">
+                        <img src="/imagenes/nr2.jpg" alt="Chica comiendo" class="rounded-xl w-full h-auto object-cover">
+                    </div>
+                    <div class="p-1.5 bg-white rounded-2xl shadow-lg w-6/12 absolute top-1/3 right-0 z-10 rotate-3">
+                        <img src="/imagenes/nr1.jpg" alt="Proyecto inmobiliario" class="rounded-xl w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

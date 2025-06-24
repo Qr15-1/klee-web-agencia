@@ -1,0 +1,84 @@
+---
+// src/components/ImageCarousel.astro
+---
+
+<!-- 1. Estructura del carrusel según la documentación de Swiper -->
+<div class="swiper mobile-carousel">
+    <div class="swiper-wrapper">
+        <!-- Slide 1 -->
+        <div class="swiper-slide">
+            <div class="p-1.5 bg-white rounded-2xl shadow-lg">
+                <img src="/imagenes/nr3.jpg" alt="Plato del día" class="rounded-xl w-full h-auto object-cover">
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="swiper-slide">
+            <div class="p-1.5 bg-white rounded-2xl shadow-lg">
+                <img src="/imagenes/nr2.jpg" alt="Chica comiendo" class="rounded-xl w-full h-auto object-cover">
+            </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="swiper-slide">
+            <div class="p-1.5 bg-white rounded-2xl shadow-lg">
+                <img src="/imagenes/nr1.jpg" alt="Proyecto inmobiliario" class="rounded-xl w-full h-auto object-cover">
+            </div>
+        </div>
+    </div>
+    <!-- Opcional: añade paginación (los puntitos de abajo) -->
+    <div class="swiper-pagination"></div>
+</div>
+
+<script>
+    // 2. Importamos Swiper y sus módulos
+    import Swiper from 'swiper';
+    import { Pagination, EffectCoverflow } from 'swiper/modules';
+    // Importamos los estilos base de Swiper
+    import 'swiper/css';
+    import 'swiper/css/pagination';
+    import 'swiper/css/effect-coverflow';
+
+    // 3. Inicializamos Swiper con opciones "cool"
+    const swiper = new Swiper('.mobile-carousel', {
+        modules: [Pagination, EffectCoverflow],
+        effect: 'coverflow', // Efecto 3D de "portada de disco"
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        loop: true,
+        coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+</script>
+
+<style>
+    /* 4. Estilos para que el carrusel se vea bien */
+    .mobile-carousel {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 50px; /* Espacio para la paginación */
+    }
+
+    .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 250px; /* Ancho de cada tarjeta/imagen */
+    }
+
+    /* Estilos para los puntitos de paginación */
+    .swiper-pagination-bullet {
+        background-color: white !important;
+        opacity: 0.5;
+    }
+    .swiper-pagination-bullet-active {
+        opacity: 1;
+    }
+</style>

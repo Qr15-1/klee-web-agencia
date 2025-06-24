@@ -1,0 +1,48 @@
+---
+// src/components/ImageGrid.astro
+
+// Este componente recibe la lista de imágenes como una "prop"
+const { images } = Astro.props;
+---
+
+<!-- 
+  NUEVO MÉTODO: Usando CSS Grid.
+  - 'grid' activa el layout de cuadrícula.
+  - 'grid-cols-2' etc., define el número de columnas. Es más robusto que el método anterior.
+-->
+<div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+  {images && images.map(image => (
+    <a 
+      href={image.link} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="group block relative overflow-hidden rounded-lg shadow-xl aspect-square"
+    >
+      <!-- Usamos la etiqueta <picture> para más control y un fallback -->
+      <picture>
+        <!-- Fallback por si la imagen no carga -->
+        <source srcset={image.imgSrc} type={`image/${image.imgSrc.split('.').pop()}`}>
+        
+        <!-- Un fondo de 'placeholder' si la imagen está rota -->
+        <div class="absolute inset-0 bg-slate-800 flex items-center justify-center">
+          <svg class="w-10 h-10 text-slate-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+          </svg>
+        </div>
+
+        <!-- La imagen real -->
+        <img
+          src={image.imgSrc}
+          alt={image.title}
+          loading="lazy"
+          class="absolute inset-0 w-full h-full object-cover 
+                 filter grayscale transition-all duration-500 ease-in-out
+                 group-hover:grayscale-0 group-hover:scale-110"
+        />
+      </picture>
+
+      <!-- Overlay con efecto "cool" (sin cambios) -->
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    </a>
+  ))}
+</div>

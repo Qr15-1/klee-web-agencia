@@ -1,0 +1,47 @@
+---
+// src/layouts/Layout.astro
+
+import '../styles/global.css';
+import FloatingSocials from '../components/FloatingSocials.astro';
+import Footer from '../components/Footer.astro'; // <-- 1. IMPORTA EL NUEVO FOOTER
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+	</head>
+
+	<body class="font-sans bg-gray-900 text-white">
+		<main>
+			<slot /> <!-- Aquí va todo el contenido de tus páginas -->
+		</main>
+
+		<!-- Los iconos flotantes se quedan donde están -->
+		<FloatingSocials />
+
+		<!-- 2. AÑADE EL FOOTER AQUÍ, AL FINAL DE TODO -->
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+  /* Define una familia de fuentes serif para la clase 'font-serif' */
+  .font-serif {
+    font-family: 'Playfair Display', serif;
+  }
+</style>

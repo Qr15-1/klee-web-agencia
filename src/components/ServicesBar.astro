@@ -1,0 +1,30 @@
+---
+// src/components/ServicesBar.astro
+---
+<section class="container mx-auto px-4">
+    <div class="relative -mt-12 z-20 flex justify-center">
+        <!-- 
+            CAMBIOS CLAVE:
+            - p-2: Se mantiene igual, es el padding del contenedor blanco.
+            - gap-1: Reducimos el espacio entre los botones.
+        -->
+        <div class="bg-white rounded-full p-2 shadow-xl flex items-center gap-1">
+
+            <!-- 
+                CAMBIOS CLAVE EN CADA BOTÓN:
+                - text-sm: Reducimos el tamaño de la fuente.
+                - py-2 px-5: Reducimos el padding horizontal (de px-6 a px-5).
+            -->
+            <a href="#" class="text-gray-600 font-medium py-2 px-5 rounded-full hover:bg-gray-100 text-sm transition-colors">Diseño</a>
+            <div class="h-5 w-px bg-gray-200"></div>
+            <a href="#" class="text-gray-600 font-medium py-2 px-5 rounded-full hover:bg-gray-100 text-sm transition-colors">Modelado 3D</a>
+            <div class="h-5 w-px bg-gray-200"></div>
+            <a href="#" class="text-gray-600 font-medium py-2 px-5 rounded-full hover:bg-gray-100 text-sm transition-colors">Producción</a>
+            <div class="h-5 w-px bg-gray-200"></div>
+            <a href="#" class="text-gray-600 font-medium py-2 px-5 rounded-full hover:bg-gray-100 text-sm transition-colors">ADS</a>
+            
+            <!-- Botón activo -->
+            <a href="#" class="bg-klee-yellow text-black font-bold py-2 px-5 rounded-full text-sm">Redes Sociales</a>
+        </div>
+    </div>
+</section>

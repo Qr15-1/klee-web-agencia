@@ -1,16 +1,43 @@
 ---
+// src/pages/index.astro
 
+// --- Importaciones ---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ServicesBar from '../components/ServicesBar.astro'; // La mantenemos
+import SocialsSection from '../components/SocialsSection.astro';
+
+
+import ServicesSection from '../components/ServiceCarousel.astro';
+import PortfolioSection from '../components/PortfolioSection.astro';
+import GallerySection from '../components/GallerySection.astro';
+import ContactSection from '../components/ContactSection.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Klee | Agencia de Marketing">
+	
+	<!-- El Header va aquí, fuera del <main> para que pueda ser 'sticky' si lo decides en el futuro -->
+	<Header />
+	
+	<main>
+		<!-- 1. Sección Principal (Hero) -->
+		<Hero />
+		
+
+		<!-- 3. La barra de servicios que ya tenías -->
+		<ServicesBar />
+
+		<!-- 2. La nueva sección de Servicios con tarjetas -->
+		<ServicesSection />
+
+		
+
+		<!-- 4. El resto de las secciones en orden -->
+		<SocialsSection />
+    <PortfolioSection />
+		<GallerySection />
+    <ContactSection />
+	</main>
+	
+</Layout> 

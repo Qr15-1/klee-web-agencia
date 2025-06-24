@@ -9,6 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.10.0"
+    "@iconify-json/mdi": "^1.2.3",
+    "@tailwindcss/vite": "^4.1.10",
+    "astro": "^5.10.0",
+    "astro-icon": "^1.1.5",
+    "gsap": "^3.13.0",
+    "swiper": "^11.2.8",
+    "tailwindcss": "^4.1.10",
+    "typewriter-effect": "^2.22.0"
   }
 }

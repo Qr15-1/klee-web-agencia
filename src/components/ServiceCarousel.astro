@@ -1,0 +1,147 @@
+---
+// src/components/ServiceCarousel.astro
+import { Icon } from 'astro-icon/components';
+
+const servicesData = [
+  { image: 'branding.jpg', tag: '#Branding', title: 'IDENTIDAD', subtitle: '- DE MARCA', description: 'Creamos marcas que dejan huella.' },
+  { image: 'desarrollo.jpg', tag: '#WebDev', title: 'DESARROLLO', subtitle: '- A MEDIDA', description: 'Soluciones web rápidas y potentes.' },
+  { image: '3d.jpg', tag: '#VisualFX', title: 'MODELADO', subtitle: '- 3D', description: 'Damos vida a tus ideas.' },
+  { image: 'ads.jpg', tag: '#Marketing', title: 'CAMPAÑAS', subtitle: '- DE ADS', description: 'Resultados que puedes medir.' },
+  { image: 'redes.jpg', tag: '#Community', title: 'GESTIÓN', subtitle: '- DE REDES', description: 'Conectamos con tu audiencia.' },
+];
+const imagePath = '/imagenes/servicios-carousel/';
+const smokeBgPath = '/imagenes/smoke-bg.png';
+---
+
+<section id="services-carousel" class="relative bg-gray-900 py-20 sm:py-24 overflow-hidden">
+  <div class="absolute inset-0 bg-cover bg-center opacity-15" style=`background-image: url(${smokeBgPath});`></div>
+  
+  <div class="relative">
+    <div class="swiper service-swiper">
+      <div class="swiper-wrapper">
+        {servicesData.map(service => (
+          <div class="swiper-slide">
+            <img src={`${imagePath}${service.image}`} alt={service.title} class="slide-image absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="slide-content absolute inset-0 z-10 p-8 flex flex-col justify-center h-full text-white text-center opacity-0 transition-opacity duration-300">
+              <div class="absolute top-5 right-5 self-start bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold">
+                {service.tag}
+              </div>
+              <div>
+                <h2 class="font-bebas text-6xl md:text-7xl tracking-wider leading-none text-shadow-lg">{service.title}</h2>
+                <div class="flex items-center justify-center gap-4 my-2">
+                  <div class="w-10 h-px bg-white/50"></div>
+                  <p class="font-sans font-bold text-sm tracking-widest">{service.subtitle}</p>
+                </div>
+                <p class="mt-4 text-white/80 text-shadow-sm max-w-xs mx-auto">{service.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <div class="service-prev-btn">
+      <Icon name="mdi:chevron-left" class="w-12 h-12"/>
+    </div>
+    <div class="service-next-btn">
+      <Icon name="mdi:chevron-right" class="w-12 h-12"/>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, EffectCoverflow } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/effect-coverflow';
+
+  function initializeSwiper() {
+    const swiper = new Swiper('.service-swiper', {
+      modules: [Navigation, EffectCoverflow],
+      // --- LA CONFIGURACIÓN DE EXPERTO ---
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      loop: true,
+      
+      slidesPerView: 5, // Mostramos 5 tarjetas para replicar el look
+      
+      coverflowEffect: {
+        rotate: 0,      // Sin rotación, como en el ejemplo
+        stretch: 50,    // LA CLAVE: El espacio 3D que las separa
+        depth: 100,     // Profundidad del efecto
+        modifier: 1,    // Efecto natural
+        scale: 0.85,    // Escala de las tarjetas laterales
+        slideShadows: false, // Look limpio
+      },
+      // ------------------------------------
+      
+      navigation: {
+        nextEl: '.service-next-btn',
+        prevEl: '.service-prev-btn',
+      },
+
+      on: {
+        init: function () { this.emit('slideChange'); },
+        slideChange: function () {
+          this.slides.forEach(slide => {
+            const content = slide.querySelector('.slide-content');
+            
+            if (slide.classList.contains('swiper-slide-active')) {
+              slide.style.filter = 'brightness(100%)';
+              content.style.opacity = '1';
+            } else {
+              slide.style.filter = 'brightness(60%)';
+              content.style.opacity = '0';
+            }
+          });
+        },
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initializeSwiper);
+</script>
+
+<style is:global>
+  #services-carousel .swiper-wrapper {
+    align-items: center;
+  }
+
+  #services-carousel .swiper-slide {
+    width: 320px;
+    height: 480px;
+    border-radius: 0.5rem; /* rounded-lg */
+    overflow: hidden;
+    transition: filter 0.5s ease-in-out;
+  }
+  
+  .text-shadow-lg { text-shadow: 0 4px 15px rgb(0 0 0 / 0.4); }
+  .text-shadow-sm { text-shadow: 0 1px 3px rgb(0 0 0 / 0.5); }
+
+  #services-carousel .service-prev-btn, 
+  #services-carousel .service-next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  #services-carousel .service-prev-btn:hover, 
+  #services-carousel .service-next-btn:hover {
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  @media (min-width: 1280px) {
+    #services-carousel .service-prev-btn { left: calc(50% - 480px); }
+    #services-carousel .service-next-btn { right: calc(50% - 480px); }
+  }
+  @media (max-width: 1279px) {
+    #services-carousel .service-prev-btn { left: 0.5rem; }
+    #services-carousel .service-next-btn { right: 0.5rem; }
+  }
+</style>
