@@ -1,21 +1,11 @@
 ---
-// src/components/Hero.astro
 import TypingTitle from './TypingTitle.astro';
+
+// 1. Recibimos la función 't' que nos llega desde la página
+const { t } = Astro.props;
 ---
 
 <section class="container mx-auto px-4 mt-3">
-    <!--
-        ¡AQUÍ ESTÁ EL CAMBIO!
-        Hemos reemplazado el color de fondo sólido por clases de degradado de Tailwind.
-        
-        - bg-gradient-to-br: Define la dirección del degradado (bottom-right).
-        - from-red-500/20: Empieza con un rojo semitransparente.
-        - via-blue-900/60: Pasa por un azul oscuro más opaco en el centro.
-        - to-blue-500/20: Termina en un azul más claro y semitransparente.
-        
-        También he quitado la línea 'style' que apuntaba a una imagen de fondo,
-        ya que la reemplazamos con este degradado CSS.
-    -->
     <div 
         class="
             relative 
@@ -24,15 +14,15 @@ import TypingTitle from './TypingTitle.astro';
             text-center p-8 overflow-hidden
         "
     >
-        <!-- Este overlay ya no es tan necesario, pero lo dejamos por si quieres
-             añadir una imagen de fondo después. Le bajamos la opacidad. -->
         <div class="absolute inset-0 bg-black/10"></div>
 
         <div class="relative z-10 flex flex-col items-center">
-            <TypingTitle client:load />
+            {/* 2. Le pasamos la función 't' al siguiente componente en la cadena */}
+            <TypingTitle t={t} />
 
+            {/* 3. Usamos 't' para mostrar el subtítulo traducido */}
             <p class="mt-4 text-xl text-gray-200 font-sans">
-                we will make you unique
+               {t('hero.subtitle')}
             </p>
         </div>
     </div>

@@ -1,0 +1,70 @@
+{
+  "site.title": "Klee | Agencia de Desarrollo Web",
+  "site.description": "Creamos soluciones digitales a medida. Desde diseño web hasta aplicaciones complejas.",
+  
+  "nav.home": "Inicio",
+  "nav.services": "Servicios",
+  "nav.blog": "Blog",
+  "nav.about": "Sobre Nosotros",
+  "nav.ctaButton": "Empieza Hoy",
+
+  "hero.title1": "Ideas Convertidas en Realidad Digital",
+  "hero.subtitle": "En Klee, seras unico.",
+  "hero.title2": "HOY MISMO",
+  "hero.button": "Ver Proyectos",
+
+  "services.design": "Diseño",
+  "services.3d": "Modelado 3D",
+  "services.production": "Producción",
+  "services.ads": "ADS",
+  "services.socials": "Redes Sociales",
+
+    "socialsSection.searchPlaceholder": "¿Por qué las Redes Sociales?",
+  "socialsSection.title1": "LAS REDES SOCIALES SE HAN TRANSFORMADO EN UNA",
+  "socialsSection.title2": "HERRAMIENTA ESENCIAL",
+  "socialsSection.p1": "Para el crecimiento, la reputación y la credibilidad de las empresas. Hoy en día, la inactividad en las redes sociales y la falta de contenido valioso pueden suscitar desconfianza entre los usuarios. Mantener una presencia activa y relevante en las plataformas digitales se ha vuelto imperativo para establecer la confianza del cliente.",
+  "socialsSection.p2": "Las redes sociales ofrecen a tu empresa la oportunidad de conectarse más profundamente con los usuarios existentes y expandir su alcance hacia nuevas audiencias, creando así una relación más cercana y significativa con su público objetivo.",
+
+    "serviceCarousel.title1": "LOGOS E",
+  "serviceCarousel.title2": "IDENTIDAD VISUAL",
+  "serviceCarousel.description": "La identidad visual es la carta de presentación de una empresa y ayuda a los consumidores a recordarla, identificarla y diferenciarla de la competencia.",
+  "serviceCarousel.button": "CONOCE LOS PAQUETES",
+  "serviceCarousel.card1Title": "IDENTIDAD DE MARCALOGO PARA ECONUTRE",
+  "serviceCarousel.card2Title": "IDENTIDAD DE MARCA PARA NOVA PARK",
+  "serviceCarousel.card3Title": "IDENTIDAD DE MARCA PARA SHULO",
+
+  "clientsSection.title": "Clientes que confían en nosotros",
+
+    "contactSection.title": "CONTACTO",
+  "contactSection.form.nameLabel": "Nombre",
+  "contactSection.form.namePlaceholder": "Tu nombre completo",
+  "contactSection.form.emailLabel": "Email",
+  "contactSection.form.emailPlaceholder": "tu@email.com",
+  "contactSection.form.subjectLabel": "Asunto",
+  "contactSection.form.subjectPlaceholder": "¿De qué te gustaría hablar?",
+  "contactSection.form.messageLabel": "Mensaje",
+  "contactSection.form.messagePlaceholder": "Cuéntanos más sobre tu proyecto...",
+  "contactSection.form.button": "ENVIAR MENSAJE",
+  "contactSection.info.title": "HABLEMOS",
+  "contactSection.info.p1": "Estamos aquí para ayudarte a transformar tus ideas en realidad. Si tienes alguna pregunta sobre nuestros servicios o quieres iniciar un nuevo proyecto, no dudes en contactarnos.",
+  "contactSection.info.p2": "Completando este formulario, uno de nuestros especialistas se pondrá en contacto contigo lo antes posible para discutir los siguientes pasos.",
+  "contactSection.info.contactTitle": "Información de contacto:",
+
+   
+  "servicesCards.productionTitle": "Produccion",
+  "servicesCards.productionSubtitle": "Producción audiovisual",
+ 
+  "servicesCards.adsTitle": "Ads",
+  "servicesCards.adsSubtitle": "Publicidad digital",
+
+  "servicesCards.webdevTitle": "Web Dev",
+  "servicesCards.webdevSubtitle": "Desarrollo web",
+  
+  "servicesCards.3dTitle": "Modelado 3D",
+  "servicesCards.3dSubtitle": "Modelado 3D",
+
+  "footer.motto": "Menos dudas, más Klee.",
+
+
+  "footer.rights": "Todos los derechos reservados."
+}

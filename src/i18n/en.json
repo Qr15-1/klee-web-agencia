@@ -1,0 +1,70 @@
+{
+  "site.title": "Klee | Web Development Agency",
+  "site.description": "We create custom digital solutions. From web design to complex applications.",
+  
+  "nav.home": "Home",
+  "nav.services": "Services",
+  "nav.blog": "Blog",
+  "nav.about": "About Us",
+  "nav.ctaButton": "Start Today",
+
+  "hero.title1": "Ideas Turned into Digital Reality",
+  "hero.subtitle": "At Klee, you will be unique.",
+  "hero.title2": "TODAY",
+  "hero.button": "View Projects",
+
+    "services.design": "Design",
+  "services.3d": "3D Modeling",
+  "services.production": "Production",
+  "services.ads": "ADS",
+  "services.socials": "Social Media",
+
+    "socialsSection.searchPlaceholder": "Why Social Media?",
+  "socialsSection.title1": "SOCIAL MEDIA HAS BECOME AN",
+  "socialsSection.title2": "ESSENTIAL TOOL",
+  "socialsSection.p1": "For business growth, reputation, and credibility. Nowadays, inactivity on social networks and a lack of valuable content can create user distrust. Maintaining an active and relevant presence on digital platforms has become imperative to establish client trust.",
+  "socialsSection.p2": "Social media offers your company the opportunity to connect more deeply with existing users and expand its reach to new audiences, thus creating a closer and more significant relationship with its target audience.",
+
+
+    "serviceCarousel.title1": "LOGOS &",
+  "serviceCarousel.title2": "VISUAL IDENTITY",
+  "serviceCarousel.description": "Visual identity is a company's presentation card, helping consumers remember, identify, and differentiate it from the competition.",
+  "serviceCarousel.button": "DISCOVER THE PACKAGES",
+  "serviceCarousel.card1Title": "BRAND IDENTITY FOR ECONUTRE",
+  "serviceCarousel.card2Title": "BRAND IDENTITY FOR NOVA PARK",
+  "serviceCarousel.card3Title": "BRAND IDENTITY FOR SHULO",
+  
+    "clientsSection.title": "Clients who trust us",
+
+      "contactSection.title": "CONTACT",
+  "contactSection.form.nameLabel": "Name",
+  "contactSection.form.namePlaceholder": "Your full name",
+  "contactSection.form.emailLabel": "Email",
+  "contactSection.form.emailPlaceholder": "your@email.com",
+  "contactSection.form.subjectLabel": "Subject",
+  "contactSection.form.subjectPlaceholder": "What would you like to talk about?",
+  "contactSection.form.messageLabel": "Message",
+  "contactSection.form.messagePlaceholder": "Tell us more about your project...",
+  "contactSection.form.button": "SEND MESSAGE",
+  "contactSection.info.title": "LET'S TALK",
+  "contactSection.info.p1": "We are here to help you transform your ideas into reality. If you have any questions about our services or want to start a new project, do not hesitate to contact us.",
+  "contactSection.info.p2": "By completing this form, one of our specialists will contact you as soon as possible to discuss the next steps.",
+  "contactSection.info.contactTitle": "Contact information:",
+
+   
+  "servicesCards.productionTitle": "Production",
+  "servicesCards.productionSubtitle": "Audiovisual Production",
+  
+  "servicesCards.adsTitle": "Ads",
+  "servicesCards.adsSubtitle": "Digital Advertising",
+ 
+  "servicesCards.webdevTitle": "Web Dev",
+  "servicesCards.webdevSubtitle": "Web Development",
+  
+  "servicesCards.3dTitle": "3D Modeling",
+  "servicesCards.3dSubtitle": "3D Modeling",
+
+    "footer.motto": "Less doubts, more Klee.",
+
+  "footer.rights": "All rights reserved."
+}

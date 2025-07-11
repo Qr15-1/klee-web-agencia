@@ -1,5 +1,19 @@
 {
   "extends": "astro/tsconfigs/strict",
+  
+  // --- BLOQUE AÑADIDO ---
+  "compilerOptions": {
+    // Establece la raíz del proyecto como la base para las rutas.
+    "baseUrl": ".",
+    // Mapea el alias '@/' a la carpeta 'src/'.
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    // Configuración recomendada por Astro
+    "jsx": "preserve"
+  },
+  // --- FIN DEL BLOQUE AÑADIDO ---
+
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"]
 }

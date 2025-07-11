@@ -1,0 +1,56 @@
+---
+// src/components/LanguageSwitcher.astro
+
+const { pathname } = Astro.url;
+const currentLang = Astro.currentLocale;
+
+// Definimos los idiomas que mostraremos en el switcher
+const languages = [
+    { code: 'es', text: 'ES' },
+    { code: 'en', text: 'EN' }
+];
+
+// Función para obtener la URL correcta para un idioma específico
+function getLocalizedPath(targetLang) {
+    let targetPath = pathname;
+
+    // Si el idioma actual NO es el por defecto (es 'en'), quitamos el prefijo
+    if (currentLang !== 'es') {
+        targetPath = targetPath.replace(`/${currentLang}`, '');
+    }
+
+    // Si el idioma de destino NO es el por defecto, añadimos su prefijo
+    if (targetLang !== 'es') {
+        targetPath = `/${targetLang}${targetPath}`;
+    }
+
+    // Asegurarnos de que la ruta raíz sea siempre '/'
+    return targetPath === '' ? '/' : targetPath;
+}
+---
+
+<div class="flex items-center gap-x-2 text-sm font-medium">
+    {languages.map((lang, index) => (
+        <>
+            {/* Si el idioma del bucle es el idioma actual, mostramos un <span> con estilo activo */}
+            {lang.code === currentLang ? (
+                <span class="text-klee-yellow font-bold">
+                    {lang.text}
+                </span>
+            ) : (
+                /* Si no, mostramos un <a> con estilo inactivo */
+                <a 
+                    href={getLocalizedPath(lang.code)} 
+                    class="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                    {lang.text}
+                </a>
+            )}
+
+            {/* Añadimos un separador '/' entre los idiomas, pero no al final */}
+            {index < languages.length - 1 && (
+                <span class="text-gray-600">/</span>
+            )}
+        </>
+    ))}
+</div>

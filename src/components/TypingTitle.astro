@@ -1,30 +1,41 @@
 ---
-// src/components/TypingTitle.astro
+// 1. Recibimos la función 't'
+const { t } = Astro.props;
+
+// 2. Usamos 't' para obtener los textos traducidos
+const titleLine1 = t('hero.title1');
+const titleLine2 = t('hero.title2');
 ---
-<!--
-    CAMBIOS CLAVE:
-    1. font-display: Para usar la tipografía "Bebas Neue" que configuramos.
-    2. text-7xl: Un tamaño un poco más pequeño y más parecido al diseño.
-    3. leading-tight: Reduce el espacio entre las líneas del título para que esté más compacto.
--->
-<h1 id="typewriter" class="font-display text-6xl md:text-7xl tracking-wider text-white leading-tight">
-      
+
+<!-- 3. Pasamos los textos al HTML usando atributos 'data-*' -->
+<h1 
+    id="typewriter" 
+    class="font-display text-6xl md:text-7xl tracking-wider text-white leading-tight"
+    data-line1={titleLine1}
+    data-line2={titleLine2}
+>
+      <!-- Espacio en blanco para que el h1 tenga altura -->
 </h1>
 
 <script>
     import Typewriter from 'typewriter-effect/dist/core';
 
     const typewriterElement = document.getElementById('typewriter');
+    
+    // 4. El script lee los textos desde los atributos del HTML
+    const line1 = typewriterElement.dataset.line1;
+    const line2 = typewriterElement.dataset.line2;
 
     const typewriter = new Typewriter(typewriterElement, {
         loop: false,
         delay: 70,
     });
 
+    // 5. Usamos las variables con el texto ya traducido
     typewriter
         .pauseFor(300)
-        .typeString('DA EL PRIMER PASO HACIA')
+        .typeString(line1)
         .typeString('<br>')
-        .typeString('EL ÉXITO <span class="text-klee-yellow">HOY MISMO</span>')
+        .typeString(`<span class="text-klee-yellow">${line2}</span>`)
         .start();
 </script>

@@ -2,32 +2,22 @@
 // src/components/Footer.astro
 
 const currentYear = new Date().getFullYear();
+// 1. Recibimos la función 't'
+const { t } = Astro.props;
 ---
 
-<!-- 
-  CAMBIOS:
-  1. Quitado mt-20 (margen superior) para que esté más pegado.
-  2. Quitado border-t (la línea superior).
--->
 <footer class="bg-gray-900">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
     
-    <!-- Mensaje principal (sin cambios) -->
     <div class="text-center mb-12">
       <p class="font-serif text-3xl sm:text-4xl text-gray-400 italic">
-         Menos dudas, más Klee.
+         {t('footer.motto')} {/* <-- Texto del lema traducido aquí */}
       </p>
     </div>
 
-    <!-- 
-      CAMBIOS:
-      1. Quitado el div de los iconos.
-      2. Quitado border-t (la segunda línea).
-      3. Centrado el texto del copyright.
-    -->
     <div class="text-center">
       <p class="text-sm text-gray-500">
-        © {currentYear} Klee. Todos los derechos reservados.
+        © {currentYear} Klee. {t('footer.rights')} {/* <-- Texto de copyright traducido aquí */}
       </p>
     </div>
 
