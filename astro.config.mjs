@@ -11,11 +11,7 @@ const __dirname = dirname(__filename);
 export default defineConfig({
   integrations: [
     tailwind(), 
-    // --- CAMBIO AQUÍ ---
-    icon({ 
-      include: ['mdi'] // Le decimos a astro-icon que incluya el conjunto de iconos 'mdi'
-    })
-    // --- FIN CAMBIO ---
+    icon() // <-- ¡AHORA SOLO 'icon()' SIN OPCIONES!
   ],
 
   i18n: {
