@@ -1,28 +1,25 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
-import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
+import mdi from "@iconify-json/mdi/icons.json";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+// https://astro.build/config
 export default defineConfig({
+  // Las integraciones se mantienen igual
   integrations: [
-    tailwind(), 
-    icon() // <-- ¡Así es como debe verse!
+    tailwind(),
+    icon({
+      sets: { mdi },
+    }),
   ],
 
+  // --- NUEVA CONFIGURACIÓN AÑADIDA ---
+  // Configuración de Internacionalización (i18n)
   i18n: {
+    // El idioma por defecto. Las páginas en este idioma no tendrán prefijo en la URL (ej. /proyectos)
     defaultLocale: 'es',
+    // La lista de todos los idiomas soportados. 
+    // Astro generará rutas con prefijo para los idiomas que no sean el de por defecto (ej. /en/proyectos)
     locales: ['es', 'en'],
-  },
-
-  vite: {
-    resolve: {
-      alias: {
-        '@': resolve(__dirname, 'src'),
-      }
-    }
   }
 });
