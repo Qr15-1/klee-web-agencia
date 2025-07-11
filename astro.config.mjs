@@ -7,11 +7,10 @@ import { dirname, resolve } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [
     tailwind(), 
-    icon() // <-- ¡AHORA SOLO 'icon()' SIN OPCIONES!
+    icon() // <-- ¡Así es como debe verse!
   ],
 
   i18n: {
