@@ -21,7 +21,7 @@ const clients = [
 const { t } = Astro.props;
 ---
 
-<section id="clients" class="py-20 sm:py-24 bg-slate-900">
+<section id="clients" class="py-10 sm:py-14 bg-slate-900">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     
     <div class="text-center">
@@ -31,7 +31,7 @@ const { t } = Astro.props;
       <div class="mt-4 h-1 w-24 bg-amber-400 mx-auto rounded-full"></div>
     </div>
 
-    <div class="mx-auto mt-16 flow-root max-w-lg lg:max-w-none">
+    <div class="mx-auto mt-20 flow-root max-w-lg lg:max-w-none">
       <div class="-mt-4 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
         
         {clients.map(client => (
@@ -43,7 +43,7 @@ const { t } = Astro.props;
               src={client.logoSrc}
               alt={`Logo de ${client.name}`} {/* El atributo alt es más complejo, lo dejamos dinámico */}
               class="
-                h-30 w-auto          
+                h-40 w-auto          
                 object-contain       
                 brightness-0 invert  
                 opacity-50 

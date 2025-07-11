@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import ContactModal from './ContactModal.astro';
 
 const { t } = Astro.props;
 
@@ -19,7 +20,7 @@ const navLinks = [
             
             <!-- GRUPO 1: El logo (a la izquierda) -->
             <a href="/">
-                <img src="/imagenes/LOGO.png" alt="Klee Logo" class="h-15 w-auto filter invert brightness-0">
+                <img src="/imagenes/LOGO.png" alt="Klee Logo" class="h-22 w-auto filter invert brightness-0">
             </a>
 
             <!-- GRUPO 2: Los enlaces de navegación (se centrarán automáticamente) -->
@@ -54,14 +55,15 @@ const navLinks = [
                     {t(link.textKey)}
                 </a>
             ))}
-            <a href="/contact" class="mt-4 bg-klee-yellow text-black font-bold py-3 px-8 rounded-full text-sm tracking-wider">
+            <button id="open-contact-modal" class="mt-4 bg-amber-400 text-black font-bold py-3 px-8 rounded-full text-sm tracking-wider">
                 {t('nav.ctaButton')}
-            </a>
+            </button>
             <div class="mt-6">
                 <LanguageSwitcher />
             </div>
         </div>
     </div>
+    <ContactModal t={t} />
 </header>
 
 <!-- Script y Estilos no cambian -->
@@ -71,6 +73,22 @@ const navLinks = [
     btn.addEventListener('click', () => {
         menu.classList.toggle('hidden');
     });
+    // Modal contacto
+    const openContactBtn = document.getElementById('open-contact-modal');
+    const contactModal = document.getElementById('contact-modal');
+    const closeContactBtn = contactModal?.querySelector('.modal-close');
+    if (openContactBtn && contactModal) {
+        openContactBtn.addEventListener('click', () => {
+            contactModal.style.display = 'flex';
+            contactModal.classList.add('open');
+        });
+    }
+    if (closeContactBtn && contactModal) {
+        closeContactBtn.addEventListener('click', () => {
+            contactModal.style.display = 'none';
+            contactModal.classList.remove('open');
+        });
+    }
 </script>
 <style>
     .boton-amarillo {

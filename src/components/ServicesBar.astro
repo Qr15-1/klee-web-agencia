@@ -13,9 +13,9 @@ const services = [
     { href: "#", textKey: "services.socials", isActive: true }, // Marcamos este como activo
 ];
 ---
-<section class="container mx-auto px-4">
+<section class="container mx-auto w-full">
     <div class="relative -mt-12 z-20 flex justify-center">
-        <div class="bg-white rounded-full p-2 shadow-xl flex items-center gap-1">
+        <div class="bg-white rounded-full p-1 shadow-xl flex items-center gap-1 min-w-max overflow-x-auto scrollbar-none">
             
             {/* 3. Recorremos el array para generar los botones dinámicamente */}
             {services.map((service, index) => (
@@ -24,7 +24,7 @@ const services = [
                     <a 
                         href={service.href} 
                         class:list={[
-                            "font-medium py-2 px-5 rounded-full text-sm transition-colors",
+                            "font-medium py-2 px-4 rounded-full text-sm transition-colors whitespace-nowrap",
                             { 
                                 'bg-klee-yellow text-black font-bold': service.isActive,
                                 'text-gray-600 hover:bg-gray-100': !service.isActive,
@@ -36,7 +36,7 @@ const services = [
 
                     {/* El separador (si no es el último elemento) */}
                     {index < services.length - 1 && (
-                        <div class="h-5 w-px bg-gray-200"></div>
+                        <div class="h-4 w-px bg-gray-200"></div>
                     )}
                 </>
             ))}
@@ -44,3 +44,38 @@ const services = [
         </div>
     </div>
 </section>
+<style>
+@media (max-width: 640px) {
+  section.container {
+    display: none !important;
+  }
+  .bg-white.rounded-full {
+    padding: 0.08rem 0.08rem !important;
+    min-width: 100vw;
+    min-height: 10px;
+    border-radius: 0.7rem !important;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .bg-white.rounded-full::-webkit-scrollbar {
+    display: none;
+  }
+  a.rounded-full {
+    font-size: 0.62rem !important;
+    padding: 0.04rem 0.22rem !important;
+    min-width: 60px;
+    border-radius: 0.7rem !important;
+    margin: 0 !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 110px;
+  }
+  .h-4 {
+    height: 0.6rem !important;
+  }
+  .w-px {
+    width: 0.5px !important;
+  }
+}
+</style>
