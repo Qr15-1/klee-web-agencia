@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import mdi from "@iconify-json/mdi/icons.json";
+import heroicons from "@iconify-json/heroicons/icons.json";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,7 +10,10 @@ export default defineConfig({
   integrations: [
     tailwind(),
     icon({
-      sets: { mdi },
+      sets: {
+        mdi,
+        heroicons,
+      },
     }),
   ],
 
