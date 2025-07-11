@@ -1,14 +1,14 @@
 ---
 // src/pages/index.astro
 
-import Layout from '@/layouts/Layout.astro';
-import Hero from '@/components/Hero.astro';
-import ServicesBar from '@/components/ServicesBar.astro';
-import ServicesSection from '@/components/ServiceCarousel.astro';
-import GallerySection from '@/components/GallerySection.astro';
-import ContactModal from '@/components/ContactModal.astro';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ServicesBar from '../components/ServicesBar.astro';
+import ServicesSection from '../components/ServiceCarousel.astro';
+import GallerySection from '../components/GallerySection.astro';
+import ContactModal from '../components/ContactModal.astro';
 // 1. Importamos nuestra función de traducción
-import { useTranslations } from '@/lib/i18n.js';
+import { useTranslations } from '../lib/i18n.js';
 
 // 2. Obtenemos el idioma actual y la función 't'
 const lang = Astro.currentLocale;
