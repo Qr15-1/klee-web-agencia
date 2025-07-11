@@ -18,9 +18,9 @@
     "tailwindcss": "^3.4.4",
     "typewriter-effect": "^2.21.0"
   },
-  // --- AÑADE ESTE BLOQUE AQUÍ ---
+
   "engines": {
     "node": "20.x"
   }
-  // --- FIN DEL BLOQUE AÑADIDO ---
+ 
 }
