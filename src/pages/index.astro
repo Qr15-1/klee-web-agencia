@@ -4,11 +4,9 @@
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/Hero.astro';
 import ServicesBar from '@/components/ServicesBar.astro';
-import SocialsSection from '@/components/SocialsSection.astro';
 import ServicesSection from '@/components/ServiceCarousel.astro';
-import PortfolioSection from '@/components/PortfolioSection.astro';
 import GallerySection from '@/components/GallerySection.astro';
-import ContactSection from '@/components/ContactSection.astro';
+import ContactModal from '@/components/ContactModal.astro';
 // 1. Importamos nuestra función de traducción
 import { useTranslations } from '@/lib/i18n.js';
 
@@ -17,15 +15,35 @@ const lang = Astro.currentLocale;
 const t = useTranslations(lang);
 ---
 
-<Layout title="Klee | Agencia de Marketing">
-	<main>
-		{/* 3. Pasamos la función 't' a cada componente que lo necesite */}
-		<Hero t={t} />
-		<ServicesBar t={t} />
-		<ServicesSection t={t} />
-		<SocialsSection t={t} />
-        <PortfolioSection t={t} />
-		<GallerySection t={t} />
-        <ContactSection t={t} />
-	</main>
-</Layout> 
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Klee | Agencia de Marketing</title>
+  </head>
+  <body>
+    <Layout title="Klee | Agencia de Marketing">
+      <main>
+        <Hero t={t} />
+        <ServicesBar t={t} />
+        <ServicesSection t={t} />
+        <GallerySection t={t} />
+        <ContactModal client:load show={Astro.locals.showContactModal} onClose={() => { Astro.locals.showContactModal = false; }} t={t} />
+      </main>
+      <script>
+        // Lógica para abrir el modal desde el botón del header
+        document.addEventListener('DOMContentLoaded', () => {
+          const btns = document.querySelectorAll('.boton-amarillo');
+          btns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              window.dispatchEvent(new CustomEvent('openContactModal'));
+            });
+          });
+          window.addEventListener('openContactModal', () => {
+            document.querySelector('contact-modal').setAttribute('show', 'true');
+          });
+        });
+      </script>
+    </Layout>
+  </body>
+</html> 
