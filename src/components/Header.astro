@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import LanguageSwitcher from './LanguageSwitcher.astro';
+import ContactModalNuevo from './ContactModalNuevo.astro';
 // import ContactModal from './ContactModal.astro';
 
 const { t } = Astro.props;
@@ -35,7 +36,7 @@ const navLinks = [
             <!-- GRUPO 3: El switcher y el botón CTA (a la derecha) -->
             <div class="hidden md:flex items-center gap-x-6">
                 <LanguageSwitcher />
-                <a href="/contact" class="boton-amarillo">
+                <a href="#" class="boton-amarillo" id="open-contact-modal-nuevo">
                     {t('nav.ctaButton')}
                 </a>
             </div>
@@ -63,7 +64,7 @@ const navLinks = [
             </div>
         </div>
     </div>
-    <!-- <ContactModal t={t} /> -->
+    <ContactModalNuevo t={t} />
 </header>
 
 <!-- Script y Estilos no cambian -->
@@ -89,6 +90,23 @@ const navLinks = [
     //     contactModal.classList.remove('open');
     //   });
     // }
+    // Lógica para abrir/cerrar el nuevo modal
+    const openContactBtnNuevo = document.getElementById('open-contact-modal-nuevo');
+    const contactModalNuevo = document.getElementById('contact-modal');
+    const closeContactBtnNuevo = contactModalNuevo?.querySelector('.modal-close');
+    if (openContactBtnNuevo && contactModalNuevo) {
+        openContactBtnNuevo.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactModalNuevo.classList.add('open');
+            contactModalNuevo.style.display = 'flex';
+        });
+    }
+    if (closeContactBtnNuevo && contactModalNuevo) {
+        closeContactBtnNuevo.addEventListener('click', () => {
+            contactModalNuevo.classList.remove('open');
+            contactModalNuevo.style.display = 'none';
+        });
+    }
 </script>
 <style>
     .boton-amarillo {

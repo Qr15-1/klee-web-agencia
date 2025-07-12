@@ -1,0 +1,125 @@
+---
+const { t } = Astro.props;
+---
+<div id="contact-modal" class="modal-overlay" tabindex="-1" style="display:none;">
+  <div class="modal-content-modal relative container mx-auto max-w-5xl p-0">
+    <button class="modal-close absolute top-4 right-4 z-20 bg-gray-800 hover:bg-gray-700 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl" aria-label="Cerrar">&times;</button>
+    <section class="relative bg-slate-900 rounded-3xl p-6 sm:p-8 overflow-hidden" style="min-height: 450px; max-height: 95vh;">
+      <div aria-hidden="true" class="absolute inset-0 -top-16 -left-16">
+        <div class="absolute top-0 left-0 w-[22rem] h-[22rem] bg-red-500/20 blur-3xl rounded-full"></div>
+      </div>
+      <div class="relative">
+        <div class="text-center mb-8">
+          <h2 class="font-bebas text-4xl font-bold tracking-tight text-white sm:text-5xl uppercase">
+            {t('contactSection.title')}
+          </h2>
+          <div class="mt-2 h-1 w-16 bg-amber-400 mx-auto rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <form action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST" class="space-y-4">
+            <div>
+              <label for="name" class="block text-xs font-medium text-gray-400 mb-1">{t('contactSection.form.nameLabel')}</label>
+              <input 
+                type="text" 
+                name="name" 
+                id="name" 
+                placeholder={t('contactSection.form.namePlaceholder')}
+                required 
+                class="w-full bg-gray-800 border border-gray-700 rounded-lg focus:border-amber-400 focus:ring focus:ring-amber-400 focus:ring-opacity-50 transition-all duration-300 p-2 text-sm text-white">
+            </div>
+            <div>
+              <label for="email" class="block text-xs font-medium text-gray-400 mb-1">{t('contactSection.form.emailLabel')}</label>
+              <input 
+                type="email" 
+                name="email" 
+                id="email" 
+                placeholder={t('contactSection.form.emailPlaceholder')}
+                required 
+                class="w-full bg-gray-800 border border-gray-700 rounded-lg focus:border-amber-400 focus:ring focus:ring-amber-400 focus:ring-opacity-50 transition-all duration-300 p-2 text-sm text-white">
+            </div>
+            <div>
+              <label for="subject" class="block text-xs font-medium text-gray-400 mb-1">{t('contactSection.form.subjectLabel')}</label>
+              <input 
+                type="text" 
+                name="subject" 
+                id="subject" 
+                placeholder={t('contactSection.form.subjectPlaceholder')}
+                required 
+                class="w-full bg-gray-800 border border-gray-700 rounded-lg focus:border-amber-400 focus:ring focus:ring-amber-400 focus:ring-opacity-50 transition-all duration-300 p-2 text-sm text-white">
+            </div>
+            <div>
+              <label for="message" class="block text-xs font-medium text-gray-400 mb-1">{t('contactSection.form.messageLabel')}</label>
+              <textarea 
+                name="message" 
+                id="message" 
+                rows="3" 
+                placeholder={t('contactSection.form.messagePlaceholder')}
+                required 
+                class="w-full bg-gray-800 border border-gray-700 rounded-lg focus:border-amber-400 focus:ring focus:ring-amber-400 focus:ring-opacity-50 transition-all duration-300 p-2 text-sm text-white"></textarea>
+            </div>
+            <button type="submit" class="w-full sm:w-auto bg-amber-400 text-gray-900 font-bold py-2 px-6 hover:bg-amber-300 transition-colors duration-300 uppercase tracking-wider rounded-lg text-sm">
+              {t('contactSection.form.button')}
+            </button>
+          </form>
+          <div class="text-gray-300 pt-1 text-sm">
+            <h3 class="font-bold text-base text-white uppercase tracking-widest">{t('contactSection.info.title')}</h3>
+            <p class="mt-2">{t('contactSection.info.p1')}</p>
+            <p class="mt-2">{t('contactSection.info.p2')}</p>
+            <div class="mt-4 border-t border-gray-700 pt-3">
+              <p class="font-bold text-white">{t('contactSection.info.contactTitle')}</p>
+              <a href="mailto:info@kleeagencia.com" class="mt-1 block text-amber-400 hover:text-amber-300 transition-colors">
+                info@kleeagencia.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(20, 23, 39, 0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+}
+.modal-overlay:not(.open) {
+  display: none !important;
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+.modal-content-modal {
+  background: transparent;
+  border-radius: 18px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.45);
+  padding: 0;
+  width: 100%;
+  max-width: 1050px;
+  min-width: 350px;
+  min-height: 450px;
+  position: relative;
+  animation: modalIn 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes modalIn {
+  from { transform: translateY(40px) scale(0.95); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.modal-close {
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal-close:hover { color: #FBC943; }
+</style> 
