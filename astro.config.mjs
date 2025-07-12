@@ -3,6 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import mdi from "@iconify-json/mdi/icons.json";
 import heroicons from "@iconify-json/heroicons/icons.json";
+import path from "path";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +17,13 @@ export default defineConfig({
       },
     }),
   ],
-
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve('./src'),
+      },
+    },
+  },
   // --- NUEVA CONFIGURACIÓN AÑADIDA ---
   // Configuración de Internacionalización (i18n)
   i18n: {
