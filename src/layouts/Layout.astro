@@ -6,7 +6,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import FloatingSocials from '../components/FloatingSocials.astro';
 import Footer from '../components/Footer.astro';
-import ContactModal from '../components/ContactModal.astro';
+// import ContactModal from '../components/ContactModal.astro';
 // Importamos nuestra nueva función de traducción
 import { useTranslations } from '../lib/i18n.js';
 
@@ -54,7 +54,7 @@ const {
 		
 		<!-- 7. Pasamos la función 't' a nuestros componentes -->
 		<Header t={t} />
-		<ContactModal t={t} />
+		<!-- <ContactModal t={t} /> -->
 
 		<main>
 			<slot />

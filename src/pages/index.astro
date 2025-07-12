@@ -6,7 +6,7 @@ import Hero from '../components/Hero.astro';
 import ServicesBar from '../components/ServicesBar.astro';
 import ServicesSection from '../components/ServiceCarousel.astro';
 import GallerySection from '../components/GallerySection.astro';
-import ContactModal from '../components/ContactModal.astro';
+// import ContactModal from '../components/ContactModal.astro';
 import StatsBar from '../components/StatsBar.astro';
 // 1. Importamos nuestra función de traducción
 import { useTranslations } from '../lib/i18n.js';
@@ -29,7 +29,7 @@ const t = useTranslations(lang);
         <ServicesSection t={t} />
         <StatsBar />
         <GallerySection t={t} />
-        <ContactModal client:load t={t} />
+        <!-- <ContactModal client:load t={t} /> -->
       </main>
       <script>
         // Lógica para abrir el modal desde el botón del header

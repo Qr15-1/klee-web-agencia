@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import ContactModal from './ContactModal.astro';
+// import ContactModal from './ContactModal.astro';
 
 const { t } = Astro.props;
 
@@ -63,7 +63,7 @@ const navLinks = [
             </div>
         </div>
     </div>
-    <ContactModal t={t} />
+    <!-- <ContactModal t={t} /> -->
 </header>
 
 <!-- Script y Estilos no cambian -->
@@ -75,20 +75,20 @@ const navLinks = [
     });
     // Modal contacto
     const openContactBtn = document.getElementById('open-contact-modal');
-    const contactModal = document.getElementById('contact-modal');
-    const closeContactBtn = contactModal?.querySelector('.modal-close');
-    if (openContactBtn && contactModal) {
-        openContactBtn.addEventListener('click', () => {
-            contactModal.style.display = 'flex';
-            contactModal.classList.add('open');
-        });
-    }
-    if (closeContactBtn && contactModal) {
-        closeContactBtn.addEventListener('click', () => {
-            contactModal.style.display = 'none';
-            contactModal.classList.remove('open');
-        });
-    }
+    // const contactModal = document.getElementById('contact-modal');
+    // const closeContactBtn = contactModal?.querySelector('.modal-close');
+    // if (openContactBtn && contactModal) {
+    //   openContactBtn.addEventListener('click', () => {
+    //     contactModal.style.display = 'flex';
+    //     contactModal.classList.add('open');
+    //   });
+    // }
+    // if (closeContactBtn && contactModal) {
+    //   closeContactBtn.addEventListener('click', () => {
+    //     contactModal.style.display = 'none';
+    //     contactModal.classList.remove('open');
+    //   });
+    // }
 </script>
 <style>
     .boton-amarillo {
