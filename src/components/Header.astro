@@ -1,0 +1,93 @@
+---
+import { Icon } from 'astro-icon/components';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import ContactModalNuevo from './ContactModalNuevo.astro';
+
+const { t } = Astro.props;
+
+const navLinks = [
+  { href: "/", textKey: "nav.home" },
+  { href: "/tours", textKey: "nav.services" },
+  { href: "/blog", textKey: "nav.blog" },
+  { href: "/about", textKey: "nav.about" }
+];
+---
+
+<header class="py-6 relative z-50">
+    <div class="container mx-auto px-6 font-sans">
+        <nav class="flex justify-between items-center">
+            <a href="/">
+                <img src="/imagenes/LOGO.png" alt="Klee Logo" class="h-22 w-auto filter invert brightness-0">
+            </a>
+            <div class="hidden md:flex items-center gap-x-8">
+                {navLinks.map(link => (
+                    <a href={link.href} class="text-gray-300 hover:text-white transition-colors text-xl font-medium">
+                        {t(link.textKey)}
+                    </a>
+                ))}
+            </div>
+            <div class="hidden md:flex items-center gap-x-6">
+                <LanguageSwitcher />
+                <a href="#" class="boton-amarillo" id="open-contact-modal-nuevo">
+                    {t('nav.ctaButton')}
+                </a>
+            </div>
+            <button id="menu-btn" class="md:hidden ml-auto focus:outline-none">
+                <Icon name="mdi:menu" class="w-8 h-8 text-white" />
+            </button>
+        </nav>
+    </div>
+
+    <div id="menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gray-900 bg-opacity-95 backdrop-blur-sm">
+        <div class="flex flex-col items-center py-8 gap-6">
+            {navLinks.map(link => (
+                <a href={link.href} class="text-white text-2xl">
+                    {t(link.textKey)}
+                </a>
+            ))}
+            <button id="open-contact-modal" class="mt-4 bg-amber-400 text-black font-bold py-3 px-8 rounded-full text-sm tracking-wider">
+                {t('nav.ctaButton')}
+            </button>
+            <div class="mt-6">
+                <LanguageSwitcher />
+            </div>
+        </div>
+    </div>
+    <ContactModalNuevo t={t} />
+</header>
+<script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+    const openContactBtn = document.getElementById('open-contact-modal');
+    const openContactBtnNuevo = document.getElementById('open-contact-modal-nuevo');
+    const contactModalNuevo = document.getElementById('contact-modal');
+    const closeContactBtnNuevo = contactModalNuevo?.querySelector('.modal-close');
+    if (openContactBtnNuevo && contactModalNuevo) {
+        openContactBtnNuevo.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactModalNuevo.classList.add('open');
+            contactModalNuevo.style.display = 'flex';
+        });
+    }
+    if (closeContactBtnNuevo && contactModalNuevo) {
+        closeContactBtnNuevo.addEventListener('click', () => {
+            contactModalNuevo.classList.remove('open');
+            contactModalNuevo.style.display = 'none';
+        });
+    }
+</script>
+<style>
+    .boton-amarillo {
+        @apply bg-transparent border-2 font-bold py-3 px-8 rounded-full text-sm tracking-wider transition-colors duration-300;
+        border-color: #FBC943;
+        color: #FBC943;
+        text-decoration: none;
+    }
+    .boton-amarillo:hover {
+        background-color: #FBC943;
+        color: black;
+    }
+</style>

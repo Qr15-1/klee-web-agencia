@@ -1,0 +1,33 @@
+---
+const { t } = Astro.props;
+
+const titleLine1 = t('hero.title1');
+const titleLine2 = t('hero.title2');
+---
+<h1 
+    id="typewriter" 
+    class="font-display text-4xl sm:text-5xl md:text-7xl tracking-wider text-white leading-tight"
+    data-line1={titleLine1}
+    data-line2={titleLine2}
+>
+</h1>
+
+<script>
+    import Typewriter from 'typewriter-effect/dist/core';
+
+    const typewriterElement = document.getElementById('typewriter');
+    
+    const line1 = typewriterElement.dataset.line1;
+    const line2 = typewriterElement.dataset.line2;
+
+    const typewriter = new Typewriter(typewriterElement, {
+        loop: false,
+        delay: 70,
+    });
+    typewriter
+        .pauseFor(300)
+        .typeString(line1)
+        .typeString('<br>')
+        .typeString(`<span class="text-klee-yellow">${line2}</span>`)
+        .start();
+</script>

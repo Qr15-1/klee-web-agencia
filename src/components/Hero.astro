@@ -1,0 +1,25 @@
+---
+import TypingTitle from './TypingTitle.astro';
+
+const { t } = Astro.props;
+---
+
+<section class="container mx-auto px-4 mt-3">
+    <div 
+        class="
+            relative 
+            bg-gradient-to-br from-red-500/20 via-blue-900/60 to-blue-500/20
+            rounded-3xl min-h-[380px] sm:min-h-[480px] md:min-h-[600px] flex flex-col justify-center items-center 
+            text-center p-5 sm:p-8 md:p-12 overflow-hidden
+        "
+    >
+        <div class="absolute inset-0 bg-black/10"></div>
+
+        <div class="relative z-10 flex flex-col items-center">
+            <TypingTitle t={t} />
+            <p class="mt-4 text-xl text-gray-200 font-sans">
+               {t('hero.subtitle')}
+            </p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,81 @@
+---
+// src/pages/Proyectos/engadi.astro (Diseño final con la columna derecha ideal)
+import Layout from '@/layouts/Layout.astro';
+
+import { Icon } from 'astro-icon/components'; // ¡Importante añadir esto para los iconos!
+
+// --- CAMBIOS CLAVE EN LOS DATOS ---
+// Ahora "services" es una lista de objetos, cada uno con título, descripción e icono.
+const client = {
+  name: "Engadi",
+  logoColor: "/imagenes/engadi.png",
+
+  mainImage: "/imagenes/Zulia.png",
+
+  projectHeadline: "Una Marca para la Era Digital.",
+  projectSummary: "Transformamos su presencia online con un branding audaz y un sitio web .",
+
+  // --- NUEVA ESTRUCTURA PARA LOS SERVICIOS ---
+  services: [
+    {
+      title: "Branding Estratégico",
+      description: "descricion.",
+      icon: "heroicons:paint-brush-solid" 
+    },
+    {
+      title: "Desarrollo con Astro",
+      description: "descricion.",
+      icon: "heroicons:bolt-solid" 
+    },
+    {
+      title: "Gestor de Contenido",
+      description: "descricion.",
+      icon: "heroicons:document-text-solid"
+    }
+  ]
+};
+---
+
+<Layout title={`Klee | Proyecto: ${client.name}`}>
+  <div class="text-white">
+    <main class="relative max-w-screen-2xl mx-auto py-12 md:py-16 pb-24 px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        <!-- COLUMNA IZQUIERDA: Texto de Impacto -->
+        <div class="lg:col-span-4 order-2 lg:order-1 text-left">
+          <h2 class="text-5xl md:text-6xl font-extrabold tracking-tighter leading-tight mb-6">{client.projectHeadline}</h2>
+          <p class="text-xl text-slate-300 max-w-lg mb-10">{client.projectSummary}</p>
+          
+        </div>
+
+        <!-- COLUMNA CENTRAL: La Imagen -->
+        <div class="lg:col-span-5 order-1 lg:order-2">
+          <img src={client.mainImage} alt={`Showcase del proyecto ${client.name}`} class="rounded-2xl shadow-2xl shadow-cyan-500/10 w-full"/>
+        </div>
+
+        <!-- ============================================= -->
+        <!--   COLUMNA DERECHA: REIMAGINADA COMO ICONOS    -->
+        <!-- ============================================= -->
+        <div class="lg:col-span-3 space-y-8 order-3 lg:order-3">
+          <!-- Ya no hay tarjeta de logo, está en la página principal -->
+          
+          <!-- Iteramos sobre la nueva lista de servicios -->
+          {client.services.map(service => (
+            <div class="flex items-start gap-4">
+              <!-- Icono Circular -->
+              <div class="flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-full bg-cyan-400/10 border border-cyan-400/30">
+                <Icon name={service.icon} class="h-6 w-6 text-cyan-400" />
+              </div>
+              <!-- Bloque de Texto -->
+              <div>
+                <h4 class="font-bold text-amber-400">{service.title}</h4>
+                <p class="mt-1 text-sm text-slate-400">{service.description}</p>
+              </div>
+            </div>
+          ))}
+
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>

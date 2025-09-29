@@ -1,0 +1,192 @@
+---
+const { t } = Astro.props;
+
+const slides = [
+  { 
+    image: '/imagenes/diseño 3d.png', 
+   
+    titleKey: 'servicesCards.3dTitle', 
+    subtitleKey: 'servicesCards.3dSubtitle', 
+    slug: 'diseno' 
+  },
+  { 
+    image: '/imagenes/diseño 3d.png', 
+   
+    titleKey: 'servicesCards.3dTitle', 
+    subtitleKey: 'servicesCards.3dSubtitle', 
+    slug: 'modelado-3d' 
+  },
+  { 
+    image: '/imagenes/produccion.png', 
+ 
+    titleKey: 'servicesCards.productionTitle', 
+    subtitleKey: 'servicesCards.productionSubtitle', 
+    slug: 'produccion' 
+  },
+  { 
+    image: '/imagenes/ads.png', 
+    
+    titleKey: 'servicesCards.adsTitle', 
+    subtitleKey: 'servicesCards.adsSubtitle', 
+    slug: 'ads' 
+  },
+  { 
+    image: '/imagenes/WedDev.png', 
+  
+    titleKey: 'servicesCards.webdevTitle', 
+    subtitleKey: 'servicesCards.webdevSubtitle', 
+    slug: 'web-dev' 
+  },
+];
+---
+
+<div class="coverflow-carousel">
+  <button class="nav-arrow prev" aria-label="Anterior">‹</button>
+  <div class="carousel-wrapper">
+    {slides.map((slide, index) => (
+      <div class="card" data-idx={index} style={`background-image: url('${slide.image}')`}>
+        <span class="card-tag">
+         
+        </span>
+        
+        <div class="card-content">
+          <h2>{t(slide.titleKey)}</h2>
+          <div class="divider"></div>
+          <a href={`/paginas/${slide.slug}`} class="card-link">{t(slide.subtitleKey)}</a>
+        </div>
+      </div>
+    ))}
+  </div>
+  <button class="nav-arrow next" aria-label="Siguiente">›</button>
+</div>
+
+<style>
+    .coverflow-carousel { display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; position: relative; }
+    .carousel-wrapper { position: relative; width: 1200px; height: 600px; perspective: 1500px; display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; }
+    .card { position: absolute; width: 320px; height: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.2); background-size: cover; background-position: center; transition: transform 0.6s cubic-bezier(.4,2,.3,1), opacity 0.6s cubic-bezier(.4,2,.3,1), filter 0.6s cubic-bezier(.4,2,.3,1); cursor: pointer; opacity: 0; filter: blur(2px) grayscale(0.5); z-index: 1; pointer-events: none; }
+    .card.active { transform: translateX(0) translateZ(0) rotateY(0); opacity: 1; filter: none; z-index: 10; pointer-events: auto; cursor: default; }
+    .card.next-1 { transform: translateX(370px) translateZ(-200px) rotateY(-35deg); opacity: 0.7; z-index: 9; filter: blur(1px) grayscale(0.2); pointer-events: auto; }
+    .card.next-2 { transform: translateX(700px) translateZ(-400px) rotateY(-45deg); opacity: 0.4; z-index: 8; filter: blur(2px) grayscale(0.5); pointer-events: auto; }
+    .card.prev-1 { transform: translateX(-370px) translateZ(-200px) rotateY(35deg); opacity: 0.7; z-index: 9; filter: blur(1px) grayscale(0.2); pointer-events: auto; }
+    .card.prev-2 { transform: translateX(-700px) translateZ(-400px) rotateY(45deg); opacity: 0.4; z-index: 8; filter: blur(2px) grayscale(0.5); pointer-events: auto; }
+    .card.hide { opacity: 0; pointer-events: none; transform: translateX(150%) scale(0.7); z-index: 1; }
+    
+    .card-content { 
+        position: absolute; 
+        bottom: 0; 
+        left: 0; 
+        width: 100%; 
+        padding: 2rem; 
+        background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 50%, transparent 100%); 
+        color: #fff; 
+        text-align: left; 
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.6s cubic-bezier(.4,2,.3,1);
+    }
+    .card.active .card-content { 
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    .card-tag {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        z-index: 11;
+        display: inline-block;
+        background-color: rgba(255,255,255,0.1);
+        backdrop-filter: blur(5px);
+        border-radius: 9999px;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #fff;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.6s cubic-bezier(.4,2,.3,1);
+    }
+    .card.active .card-tag {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .divider { width: 50px; height: 2px; background: #fff; margin: 1rem 0; opacity: 0.7; }
+    .card-content h2 { font-size: 2.5rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem; line-height: 1.1; }
+    .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 20; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; width: 50px; height: 50px; color: #fff; font-size: 2rem; cursor: pointer; transition: background 0.3s; display: flex; align-items: center; justify-content: center; user-select: none; }
+    .nav-arrow.prev { left: 10%; }
+    .nav-arrow.next { right: 10%; }
+    .nav-arrow:hover { background: rgba(255,255,255,0.4); }
+
+    .card-content .card-link {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 9999px;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .card-content .card-link:hover {
+      background-color: #FBC943;
+      border-color: #FBC943;
+      color: #111827;
+    }
+
+    @media (max-width: 640px) {
+    }
+</style>
+
+<script>
+    const carousel = document.querySelector('.coverflow-carousel');
+    
+    if (carousel) {
+        let current = 2;
+        const cards = Array.from(carousel.querySelectorAll('.card'));
+        
+        function updateClasses() {
+          if (cards.length === 0) return;
+          cards.forEach((card, i) => {
+            card.className = 'card';
+            let pos = i - current;
+            if (pos === 0) card.classList.add('active');
+            else if (pos === 1) card.classList.add('next-1');
+            else if (pos === 2) card.classList.add('next-2');
+            else if (pos === -1) card.classList.add('prev-1');
+            else if (pos === -2) card.classList.add('prev-2');
+            else card.classList.add('hide');
+          });
+        }
+        
+        const nextButton = carousel.querySelector('.nav-arrow.next') as HTMLButtonElement;
+        const prevButton = carousel.querySelector('.nav-arrow.prev') as HTMLButtonElement;
+
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                current = (current + 1) % cards.length;
+                updateClasses();
+            });
+        }
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                current = (current - 1 + cards.length) % cards.length;
+                updateClasses();
+            });
+        }
+        
+        cards.forEach((card, i) => {
+            card.addEventListener('click', () => {
+                if (i !== current) {
+                    current = i;
+                    updateClasses();
+                }
+            });
+        });
+        updateClasses();
+    }
+</script>

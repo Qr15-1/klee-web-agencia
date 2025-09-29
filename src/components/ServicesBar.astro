@@ -1,0 +1,73 @@
+---
+const { t } = Astro.props;
+
+const services = [
+    { href: "#", textKey: "services.design", isActive: false },
+    { href: "#", textKey: "services.3d", isActive: false },
+    { href: "#", textKey: "services.production", isActive: false },
+    { href: "#", textKey: "services.ads", isActive: false },
+    { href: "#", textKey: "services.socials", isActive: true },
+];
+---
+<section class="container mx-auto w-full">
+    <div class="relative -mt-12 z-20 flex justify-center">
+        <div class="bg-white rounded-full p-1 shadow-xl flex items-center gap-1 min-w-max overflow-x-auto scrollbar-none">
+            
+            {services.map((service, index) => (
+                <>
+                    <a 
+                        href={service.href} 
+                        class:list={[
+                            "font-medium py-2 px-4 rounded-full text-sm transition-colors whitespace-nowrap",
+                            { 
+                                'bg-klee-yellow text-black font-bold': service.isActive,
+                                'text-gray-600 hover:bg-gray-100': !service.isActive,
+                            }
+                        ]}
+                    >
+                        {t(service.textKey)}
+                    </a>
+                    {index < services.length - 1 && (
+                        <div class="h-4 w-px bg-gray-200"></div>
+                    )}
+                </>
+            ))}
+
+        </div>
+    </div>
+</section>
+<style>
+@media (max-width: 640px) {
+  section.container {
+    display: none !important;
+  }
+  .bg-white.rounded-full {
+    padding: 0.08rem 0.08rem !important;
+    min-width: 100vw;
+    min-height: 10px;
+    border-radius: 0.7rem !important;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .bg-white.rounded-full::-webkit-scrollbar {
+    display: none;
+  }
+  a.rounded-full {
+    font-size: 0.62rem !important;
+    padding: 0.04rem 0.22rem !important;
+    min-width: 60px;
+    border-radius: 0.7rem !important;
+    margin: 0 !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 110px;
+  }
+  .h-4 {
+    height: 0.6rem !important;
+  }
+  .w-px {
+    width: 0.5px !important;
+  }
+}
+</style>

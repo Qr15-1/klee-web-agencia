@@ -1,0 +1,56 @@
+---
+const clients = [
+  { slug: 'Enforme', name: 'Enforme', logoSrc: '/imagenes/Enforme.png' },
+  { slug: 'engadi', name: 'Engadi', logoSrc: '/imagenes/engadi.png' },
+  { slug: 'Expo', name: 'Expo', logoSrc: '/imagenes/Expo.png' },
+  { slug: 'Focus', name: 'Focus', logoSrc: '/imagenes/Focus.png' },
+  { slug: 'Hana', name: 'Hana', logoSrc: '/imagenes/Hana.png' },
+  { slug: 'LobbyPest', name: 'Lobby Pest', logoSrc: '/imagenes/LobbyPest.png' },
+  { slug: 'Pataton', name: 'Pataton', logoSrc: '/imagenes/Pataton.png' },
+  { slug: 'Tiger', name: 'Tiger', logoSrc: '/imagenes/Tiger.png' },
+  { slug: 'Variaciones', name: 'Variaciones', logoSrc: '/imagenes/Variaciones-03.png' },
+  { slug: 'Zulia', name: 'Zulia', logoSrc: '/imagenes/Zulia.png' },
+];
+
+const { t } = Astro.props;
+---
+
+<section id="clients" class="py-10 sm:py-14 bg-slate-900">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        {t('clientsSection.title')}
+      </h2>
+      <div class="mt-4 h-1 w-24 bg-amber-400 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="mx-auto mt-20 flow-root max-w-lg lg:max-w-none">
+      <div class="-mt-4 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
+        
+        {clients.map(client => (
+          <a
+            href={`/Proyectos/${client.slug}`}
+            class="group flex h-24 items-center justify-center"
+          >
+            <img
+              src={client.logoSrc}
+              alt={`Logo de ${client.name}`}
+              class="
+                h-40 w-auto          
+                object-contain       
+                brightness-0 invert  
+                opacity-50 
+                transition-all duration-300  
+                group-hover:opacity-100
+                group-hover:scale-110
+              "
+            />
+          </a>
+        ))}
+
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,31 @@
+---
+// src/pages/en/index.astro
+
+import Layout from '@/layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import ServicesBar from '../../components/ServicesBar.astro';
+
+import ServicesSection from '../../components/ServiceCarousel.astro';
+import StatsBar from '../../components/StatsBar.astro';
+
+import GallerySection from '../../components/GallerySection.astro';
+
+// 1. Importamos nuestra función de traducción
+import { useTranslations } from '../../lib/i18n.js';
+
+// 2. Obtenemos el idioma actual (aquí será 'en') y la función 't'
+const lang = Astro.currentLocale;
+const t = useTranslations(lang);
+---
+
+<Layout title="Klee | Marketing Agency">
+	<main>
+		{/* 3. Pasamos la función 't' a cada componente que lo necesite */}
+		<Hero t={t} />
+		<ServicesBar t={t} />
+		<ServicesSection t={t} />
+		<StatsBar />
+		<GallerySection t={t} />
+        
+	</main>
+</Layout> 

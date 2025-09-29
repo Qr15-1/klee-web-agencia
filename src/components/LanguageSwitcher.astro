@@ -1,0 +1,45 @@
+---
+const { pathname } = Astro.url;
+const currentLang = Astro.currentLocale;
+
+const languages = [
+    { code: 'es', text: 'ES' },
+    { code: 'en', text: 'EN' }
+];
+
+function getLocalizedPath(targetLang) {
+    let targetPath = pathname;
+
+    if (currentLang !== 'es') {
+        targetPath = targetPath.replace(`/${currentLang}`, '');
+    }
+
+    if (targetLang !== 'es') {
+        targetPath = `/${targetLang}${targetPath}`;
+    }
+
+    return targetPath === '' ? '/' : targetPath;
+}
+---
+
+<div class="flex items-center gap-x-2 text-sm font-medium">
+    {languages.map((lang, index) => (
+        <>
+            {lang.code === currentLang ? (
+                <span class="text-klee-yellow font-bold">
+                    {lang.text}
+                </span>
+            ) : (
+                <a 
+                    href={getLocalizedPath(lang.code)} 
+                    class="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                    {lang.text}
+                </a>
+            )}
+            {index < languages.length - 1 && (
+                <span class="text-gray-600">/</span>
+            )}
+        </>
+    ))}
+</div>

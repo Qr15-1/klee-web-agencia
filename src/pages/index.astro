@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ServicesBar from '../components/ServicesBar.astro';
+import ServicesSection from '../components/ServiceCarousel.astro';
+import GallerySection from '../components/GallerySection.astro';
+import StatsBar from '../components/StatsBar.astro';
+import { useTranslations } from '../lib/i18n.js';
+
+const lang = Astro.currentLocale;
+const t = useTranslations(lang);
+---
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Klee | Agencia de Marketing</title>
+  </head>
+  <body>
+    <Layout title="Klee | Agencia de Marketing">
+      <main>
+        <Hero t={t} />
+        <ServicesBar t={t} />
+        <ServicesSection t={t} />
+        <StatsBar />
+        <GallerySection t={t} />
+      </main>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const btns = document.querySelectorAll('.boton-amarillo');
+          btns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              window.dispatchEvent(new CustomEvent('openContactModal'));
+            });
+          });
+          window.addEventListener('openContactModal', () => {
+            const modal = document.getElementById('contact-modal');
+            if (modal) modal.style.display = 'flex';
+          });
+        });
+      </script>
+    </Layout>
+  </body>
+</html> 

@@ -1,0 +1,79 @@
+---
+// 1. Importa tu Layout general para mantener el header y footer
+import Layout from '../../../layouts/Layout.astro';
+
+// 2. Define el nombre del servicio para esta página específica
+// ¡CAMBIA ESTO PARA CADA PÁGINA! (Ej: "Publicidad Digital" para ads.astro)
+const serviceName = "ADS";
+---
+
+<Layout title={`Klee | ${serviceName} (En Construcción)`}>
+  
+  <main class="relative flex items-center justify-center min-h-[80vh] text-white overflow-hidden p-4">
+    <!-- Fondo de rejilla animado sutil -->
+    <div class="absolute inset-0 z-0 grid-background"></div>
+
+    <!-- Contenido principal centrado -->
+    <div class="relative z-10 text-center bg-slate-900/50 backdrop-blur-sm p-8 md:p-12 rounded-2xl border border-white/10 shadow-2xl max-w-2xl">
+
+      <!-- Icono de engranaje animado -->
+      <div class="mb-6">
+        <svg class="animate-spin-slow h-16 w-16 mx-auto text-cyan-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 20.25c-4.556 0-8.25-3.694-8.25-8.25s3.694-8.25 8.25-8.25 8.25 3.694 8.25 8.25-3.694 8.25-8.25 8.25z"></path>
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z"></path>
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 12h.75m-16.5 0H3m16.685-5.185l.53-.53M3.315 17.185l-.53.53m14.4-14.4l.53.53M3.315 6.815l-.53-.53M12 3.75V3m0 18v-.75"></path>
+        </svg>
+      </div>
+
+      <!-- Título con gradiente -->
+      <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-cyan-400 text-transparent bg-clip-text mb-4">
+        Men estamos trabajando! 
+      </h1>
+
+      <!-- Mensaje descriptivo -->
+      <p class="text-slate-300 mb-8 max-w-md mx-auto">
+        La página  <strong>{serviceName}</strong> está en proceso, men  ELAJETE.
+      </p>
+
+      <!-- Botón para volver al inicio -->
+      <a href="/" class="inline-block bg-cyan-500 hover:bg-cyan-400 text-gray-900 font-bold py-3 px-8 rounded-full transition-transform duration-300 hover:scale-105 shadow-lg shadow-cyan-500/20">
+        Volver al Inicio
+      </a>
+    </div>
+  </main>
+
+</Layout>
+
+<style>
+  /* Estilo para el fondo de rejilla */
+  .grid-background {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: pan-grid 200s linear infinite;
+  }
+
+  /* Animación para el fondo */
+  @keyframes pan-grid {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 1000px 1000px;
+    }
+  }
+
+  /* Animación de rotación lenta para el engranaje */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .animate-spin-slow {
+    animation: spin 10s linear infinite;
+  }
+</style>
