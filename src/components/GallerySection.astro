@@ -37,13 +37,15 @@ const { t } = Astro.props;
               src={client.logoSrc}
               alt={`Logo de ${client.name}`}
               class="
-                h-40 w-auto          
+                h-40 w-40            
                 object-contain       
                 brightness-0 invert  
                 opacity-50 
                 transition-all duration-300  
                 group-hover:opacity-100
                 group-hover:scale-110
+                group-hover:brightness-100
+                group-hover:invert-0
               "
             />
           </a>
